@@ -1,5 +1,6 @@
 # ccm clusters
 
+from distutils.version import LooseVersion
 import itertools
 import os
 import random
@@ -198,10 +199,10 @@ class Cluster(object):
         return [self.nodes[name] for name in sorted(self.nodes.keys())]
 
     def version(self):
-        return self.__version
+        return LooseVersion(self.__version)
 
     def cassandra_version(self):
-        return self.version()
+        return LooseVersion(self.version())
 
     def add(self, node, is_seed, data_center=None):
         if node.name in self.nodes:

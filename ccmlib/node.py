@@ -230,9 +230,9 @@ class Node(object):
 
     def get_cassandra_version(self):
         try:
-            return common.get_version_from_build(self.get_install_dir())
+            return LooseVersion(common.get_version_from_build(self.get_install_dir()))
         except common.CCMError:
-            return self.cluster.cassandra_version()
+            return LooseVersion(self.cluster.cassandra_version())
 
     def get_base_cassandra_version(self):
         version = self.get_cassandra_version()
