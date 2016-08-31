@@ -1288,9 +1288,6 @@ class Node(object):
     def cleanup(self):
         self.nodetool("cleanup")
 
-    def version(self):
-        self.nodetool("version")
-
     def decommission(self):
         self.nodetool("decommission")
         self.status = Status.DECOMMISSIONED
